@@ -22,8 +22,10 @@ import tensorflow as tf
 # for square detector
 from utils import pred_squares
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '' # CPU mode
+# os.environ['CUDA_VISIBLE_DEVICES'] = '0' # CPU mode
+gpus = tf.config.experimental.list_physical_devices('GPU')
 
+tf.config.set_visible_devices(gpus[0], 'GPU')
 # flask
 app = Flask(__name__)
 logger = app.logger
