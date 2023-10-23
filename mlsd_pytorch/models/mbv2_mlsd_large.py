@@ -170,7 +170,8 @@ class MobileNetV2(nn.Module):
         return self._forward_impl(x)
 
     def _load_pretrained_model(self):
-        pretrain_dict = model_zoo.load_url('https://download.pytorch.org/models/mobilenet_v2-b0353104.pth')
+        #pretrain_dict = model_zoo.load_url('https://download.pytorch.org/models/mobilenet_v2-b0353104.pth')
+        pretrain_dict = torch.load('./models/mobilev2_mlsd_large_512_bsize24/best.pth')
         model_dict = {}
         state_dict = self.state_dict()
         for k, v in pretrain_dict.items():

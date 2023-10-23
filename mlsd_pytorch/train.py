@@ -4,7 +4,6 @@ import math
 import sys
 
 sys.path.append(os.path.dirname(__file__)+'/../')
-
 from  mlsd_pytorch.utils.logger import TxtLogger
 from  mlsd_pytorch.utils.comm import setup_seed, create_dir
 from  mlsd_pytorch.cfg.default import  get_cfg_defaults
@@ -19,7 +18,7 @@ import  argparse
 def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--config",
-                        default= os.path.dirname(__file__)+ '/configs/mobilev2_mlsd_tiny_512_base.yaml',
+                        default= os.path.dirname(__file__)+ '/configs/mobilev2_mlsd_large_512_base2_bsize24.yaml',
                         type=str,
                         help="")
     return parser.parse_args()
@@ -27,6 +26,7 @@ def get_args():
 def train(cfg):
     train_loader = get_train_dataloader(cfg)
     val_loader   = get_val_dataloader(cfg)
+
     model = build_model(cfg).cuda()
 
 
@@ -83,7 +83,7 @@ def train(cfg):
         batch_to_model_inputs_fn = None,
         early_stop_n= cfg.train.early_stop_n)
 
-    #learner.val(model, val_loader)
+    learner.val(model, val_loader)
     #learner.val(model, train_loader)
     learner.train(train_loader, val_loader, epoches= cfg.train.num_train_epochs)
 

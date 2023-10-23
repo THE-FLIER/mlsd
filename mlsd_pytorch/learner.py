@@ -152,8 +152,6 @@ class Simple_MLSD_Learner():
         sAP = AP(tp, fp) * 100
         self.logger.write("==>step: {}, f_score: {}, recall: {}, precision:{}, sAP10: {}\n ".
                           format(self.global_step, f_score, recall, precision, sAP))
-
-
         return {
             'fscore': f_score,
             'recall': recall,

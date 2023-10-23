@@ -48,7 +48,7 @@ parser.add_argument('--input_size', default=512, type=int,
                     help='The size of input images.')
 
 ## LSD parameter
-parser.add_argument('--score_thr', default=0.10, type=float,
+parser.add_argument('--score_thr', default=0.40, type=float,
                     help='Discard center points when the score < score_thr.')
 
 ## intersection point parameters
