@@ -84,4 +84,3 @@ with open('book/train.json', 'w') as f:
 with open('book/valid.json', 'w') as f:
     json.dump(result1, f)
 
-
