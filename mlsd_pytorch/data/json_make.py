@@ -6,6 +6,7 @@ import torch
 import json
 import random
 import numpy as np
+
 import matplotlib.pyplot as plt
 
 #检查是否四个一组
@@ -25,9 +26,10 @@ img_dir = './book/images/1.jpg'
 # 初始化结果列表
 result = []
 result1 = []
-a = 1
 # 遍历文件夹中的每个文件
-for filename in os.listdir(folder_path):
+file = os.listdir(folder_path)
+random.shuffle(file)
+for index, filename in enumerate(file):
     name = filename.split('.')[0]+'.jpg'
     path = os.path.join(folder_path, filename)
     # 检查文件是否为json文件
@@ -57,12 +59,13 @@ for filename in os.listdir(folder_path):
                 else:
                     new_points_lien = [i[0][0], i[0][1], i[1][0], i[1][1]]
                     new_data["lines"].append(new_points_lien)
-
+    if index <= len(file)*0.8:
         result.append(new_data)
-
+    else:
+        result1.append(new_data)
 #将结果保存为新的json文件
 with open('book/train.json', 'w') as f:
     json.dump(result, f)
-# with open('book/valid.json', 'w') as f:
-#     json.dump(result1, f)
+with open('book/valid.json', 'w') as f:
+    json.dump(result1, f)
 

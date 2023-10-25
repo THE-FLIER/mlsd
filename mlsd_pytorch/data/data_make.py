@@ -25,9 +25,9 @@ img_dir = './book/images/1.jpg'
 # 初始化结果列表
 result = []
 result1 = []
-a = 1
-# 遍历文件夹中的每个文件
-for filename in os.listdir(folder_path):
+file = os.listdir(folder_path)
+random.shuffle(file)
+for index, filename in enumerate(file):
     name = filename.split('.')[0]+'.jpg'
     # 检查文件是否为json文件
     if filename.endswith('.txt'):
@@ -72,8 +72,7 @@ for filename in os.listdir(folder_path):
                     new_data["lines"].append(new_points3)
                     new_data["lines"].append(new_points4)
                 # 将新的数据添加到结果列表中
-        a +=1
-        if a<= 400:
+        if index <= len(file) * 0.8:
             result.append(new_data)
         else:
             result1.append(new_data)
