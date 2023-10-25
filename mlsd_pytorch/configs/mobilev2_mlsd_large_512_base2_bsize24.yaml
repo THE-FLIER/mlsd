@@ -9,8 +9,8 @@ model:
 
 train:
     save_dir:  './runs/models/mobilev2_mlsd_large_512_bsize24/'
-    img_dir:  "./data/wireframe/images/"
-    label_fn: "./data/wireframe/train.json"
+    img_dir:  "./data/book/images/"
+    label_fn: "./data/book/train.json"
     num_train_epochs: 155
     batch_size: 16
     learning_rate: 0.003
@@ -22,13 +22,13 @@ train:
     milestones_in_epo: True
     lr_decay_gamma: 0.2
 
-    data_cache_dir: "./data/wireframe_cache/"
+    data_cache_dir: "./data/book_cache/"
     with_cache: False
     cache_to_mem: False
 
 val:
-    img_dir: "./data/wireframe/images/"
-    label_fn: "./data/wireframe/valid.json"
+    img_dir: "./data/book/images/"
+    label_fn: "./data/book/valid.json"
     batch_size: 8
     val_after_epoch: 50
 

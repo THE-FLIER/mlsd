@@ -27,9 +27,9 @@ sys:
   num_workers: 8
 train:
   adam_epsilon: 1.0e-06
-  batch_size: 24
+  batch_size: 16
   cache_to_mem: false
-  data_cache_dir: ./data/wireframe_cache/
+  data_cache_dir: ./data/book_cache/
   device_ids:
   - 0
   device_ids_str: '0'
@@ -37,8 +37,8 @@ train:
   dropout: 0.1
   early_stop_n: 200
   gradient_accumulation_steps: 1
-  img_dir: ./data/wireframe/images/
-  label_fn: ./data/wireframe/train.json
+  img_dir: ./data/book/images/
+  label_fn: ./data/book/train.json
   learning_rate: 0.003
   load_from: ''
   log_steps: 50
@@ -57,6 +57,6 @@ train:
   with_cache: false
 val:
   batch_size: 8
-  img_dir: ./data/wireframe/images/
-  label_fn: ./data/wireframe/valid.json
+  img_dir: ./data/book/images/
+  label_fn: ./data/book/valid.json
   val_after_epoch: 50
